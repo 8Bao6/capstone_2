@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Quản lý sản phẩm</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+</head>
+
+<body>
+  <div class="container">
+    <header class="display-4 my-4" style="text-align: center;">Quản lí sản phẩm</header>
+    <!-- Phan tab menu -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" href="#DanhSachSP" role="tab" data-toggle="tab">Danh sách sản phẩm</a>
+      </li>
+    </ul>
+    <br />
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <!--Danh sách sản phẩm -->
+      <div role="tabpanel" class="tab-pane in active" id="DanhSachSP">
+        <div class="row">
+          <div class="col-md-8">
+            <!-- BEGIN BUTTOM THÊM MỚI -->
+            <button id="btnThemSP" class="btn btn-warning" data-toggle="modal" data-target="#myModal">
+              <i class="fa fa-plus mr-1"></i>
+              Add Products
+            </button>
+            <!-- END BUTTON THÊM MỚI -->
+          </div>
+          <div class="col-md-4">
+            <!-- BEGIN TÌM KIẾM -->
+            <div>
+              <div class="form-group row">
+                <label for="filterProduct" class="col-sm-2 col-form-label">Filter</label>
+                <div class="col-sm-10">
+                  <select class="custom-select" id="filterProduct">
+                    <option selected>Select</option>
+                    <option value="all">All</option>
+                    <option value="iphone">Iphone</option>
+                    <option value="samsung">Samsung</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <!-- END TÌM KIẾM -->
+          </div>
+        </div>
+        <div class="clear-fix"></div>
+        <div class="tblSanPham" id="tblSanPham">
+          <!-- BEGIN TABLE SẢN PHẨM -->
+          <table class="table table-bordered">
+            <thead>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Screen</th>
+              <th>Back Camera</th>
+              <th>Front Camera</th>
+              <th>Img</th>
+              <th>Description</th>
+              <th>Type</th>
+            </thead>
+            <tbody id="tblDanhSachSP"></tbody>
+          </table>
+          <!-- END TABLE SẢN PHẨM -->
+        </div>
+        <br />
+      </div>
+      <!-- Kết thúc danh sách sản phẩm -->
+    </div>
+
+    <!--KetThuc Tabmenu-->
+
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title" id="modalTitle">Products</h4>
+            <button type="button" class="close" data-dismiss="modal">
+              &times;
+            </button>
+          </div>
+          <!-- Modal body -->
+
+          <div class="modal-body">
+            <div class="modal-body">
+              <div class="form-group">
+                <label>Mã Sản Phẩm</label>
+                <input id="maSP" class="form-control" placeholder="Nhập vào mã sản phẩm" />
+              </div>
+              <div class="text-danger" id="errorMaSP" style="display: none;">(*) Vui lòng nhập mã sản phẩm</div>
+              <div class="form-group">
+                <label>Tên Sản Phẩm</label>
+                <input id="TenSP" class="form-control" placeholder="Nhập vào tên sản phẩm" />
+              </div>
+              <div class="text-danger" id="errorTenSP" style="display: none;">(*) Vui lòng nhập tên sản phẩm</div>
+              <div class="form-group">
+                <label>Giá</label>
+                <input id="GiaSP" class="form-control" placeholder="Nhập vào giá" />
+              </div>
+              <div class="text-danger" id="errorGiaSP" style="display: none;">(*) Vui lòng nhập giá</div>
+              <div class="form-group">
+                <label>Màn hình</label>
+                <input id="manHinhSP" class="form-control" placeholder="Nhập vào thông tin" />
+              </div>
+              <div class="text-danger" id="errorManHinh" style="display: none;">(*) Vui lòng nhập thông tin</div>
+              <div class="form-group">
+                <label>Camera Sau</label>
+                <input id="backCamera" class="form-control" placeholder="Nhập vào thông tin" />
+              </div>
+              <div class="text-danger" id="errorBackCmr" style="display: none;">(*) Vui lòng nhập thông tin</div>
+              <div class="form-group">
+                <label>Camera Trước</label>
+                <input id="frontCamera" class="form-control" placeholder="Nhập vào thông tin" />
+              </div>
+              <div class="text-danger" id="errorFrontCmr" style="display: none;">(*) Vui lòng nhập thông tin</div>
+              <div class="form-group">
+                <label>Hình Ảnh</label>
+                <input id="hinhAnhSP" class="form-control" placeholder="Vui lòng nhập" />
+              </div>
+              <div class="text-danger" id="errorHinhAnh" style="display: none;">(*) Vui lòng nhập </div>
+              <div class="form-group">
+                <label>Mô Tả</label>
+                <input id="moTaSP" class="form-control" placeholder="Nhập vào mô tả sản phẩm" />
+              </div>
+              <div class="text-danger" id="errorMoTa" style="display: none;">(*) Vui lòng nhập mô tả</div>
+              <!-- <div class="form-group"> -->
+              <!-- <label for="">Loại sản phẩm: </label> -->
+              <select class="form-control" id="loaiSP">
+                <option>Select type</option>
+                <option value="iphone">IPhone</option>
+                <option value="samsung">Samsung</option>
+
+              </select>
+              <!-- </div> -->
+              <div class="text-danger" id="errorLoaiSP" style="display: none;">(*) Vui lòng chọn loại sản phẩm</div>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button id="themSP" class="btn btn-primary">Add Products</button>
+              <button id="suaSP" class="btn btn-success">Update</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container"></div>
+    <style>
+      #container {
+        min-width: 310px;
+        max-width: 800px;
+        height: 400px;
+        margin: 0 auto;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"
+      integrity="sha512-0qU9M9jfqPw6FKkPafM3gy2CBAvUWnYVOfNPDYKVuRTel1PrciTj+a9P3loJB+j0QmN2Y0JYQmkBBS8W+mbezg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../js/model/product.js"></script>
+    <script src="../js/services/productService.js"></script>
+    <script src="../js/model/validation.js"></script>
+    <script src="../js/controllers/main.js"></script>
+</body>
+
+</html>
