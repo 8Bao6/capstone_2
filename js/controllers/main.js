@@ -51,8 +51,8 @@ function deleteProduct(id) {
     })
 }
 getEle("btnThemSP").addEventListener("click", function (params) {
-  // getEle("suaSP").style.display = "none";
-  // getEle("themSP").style.display = "block";
+  getEle("suaSP").style.display = "none";
+  getEle("themSP").style.display = "block";
   // getEle("errorMaSP").style.display = "none";
   // getEle("errorTenSP").style.display = "none";
   // getEle("errorGiaSP").style.display = "none";
@@ -137,6 +137,7 @@ function editProduct(id) {
 }
 
 getEle("suaSP").addEventListener("click", function (params) {
+
   var product = getProduct();
   console.log(product);
   productServices.updateProduct(product)
